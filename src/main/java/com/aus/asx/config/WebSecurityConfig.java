@@ -24,7 +24,6 @@ import lombok.RequiredArgsConstructor;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    ;
     @Value(value = "${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
     private String issuer;
 
@@ -35,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          * our app to serve as an OAuth2 Resource Server, using JWT validation.
          */
         http.authorizeRequests()
-            .mvcMatchers("/actuator")
+            .mvcMatchers("/actuator/**")
             .permitAll()
             .and()
             .oauth2ResourceServer()
